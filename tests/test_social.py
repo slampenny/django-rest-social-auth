@@ -130,16 +130,12 @@ class TestSocialAuth1(APITestCase, BaseTwitterApiTestCase):
         resp = self.client.post(reverse('login_social_session'), data={
             'provider': 'twitter',
             'oauth_token': 'foobar',
+            'oauth_token_secret': 'boofar',
             'oauth_verifier': 'overifier'
         })
         self.assertEqual(resp.status_code, 200)
 
     def test_login_social_oauth1_token(self):
-        """
-        Currently oauth1 works only if session is enabled.
-        Probably it is possible to make it work without session, but
-        it will be needed to change the logic in python-social-auth.
-        """
         resp = self.client.post(reverse('login_social_token_user'),
             data={'provider': 'twitter'})
         self.assertEqual(resp.status_code, 200)
@@ -147,17 +143,13 @@ class TestSocialAuth1(APITestCase, BaseTwitterApiTestCase):
         resp = self.client.post(reverse('login_social_token_user'), data={
             'provider': 'twitter',
             'oauth_token': 'foobar',
+            'oauth_token_secret': 'boofar',
             'oauth_verifier': 'overifier'
         })
         self.assertEqual(resp.status_code, 200)
 
     @modify_settings(INSTALLED_APPS={'remove': ['rest_framework.authtoken', ]})
     def test_login_social_oauth1_jwt(self):
-        """
-        Currently oauth1 works only if session is enabled.
-        Probably it is possible to make it work without session, but
-        it will be needed to change the logic in python-social-auth.
-        """
         try:
             import rest_framework_jwt
         except ImportError:
@@ -170,6 +162,7 @@ class TestSocialAuth1(APITestCase, BaseTwitterApiTestCase):
         resp = self.client.post(reverse('login_social_token_user'), data={
             'provider': 'twitter',
             'oauth_token': 'foobar',
+            'oauth_token_secret': 'boofar',
             'oauth_verifier': 'overifier'
         })
         self.assertEqual(resp.status_code, 200)

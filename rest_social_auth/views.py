@@ -24,6 +24,7 @@ from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny
 from requests.exceptions import HTTPError
+from .monkeypatch import *  # noqa
 from .serializers import (OAuth2InputSerializer, OAuth1InputSerializer, UserSerializer,
     TokenSerializer, UserTokenSerializer, JWTSerializer, UserJWTSerializer)
 

@@ -19,6 +19,7 @@ class OAuth1InputSerializer(serializers.Serializer):
 
     provider = serializers.CharField(required=False)
     oauth_token = serializers.CharField()
+    oauth_token_secret = serializers.CharField()
     oauth_verifier = serializers.CharField()
 
 
