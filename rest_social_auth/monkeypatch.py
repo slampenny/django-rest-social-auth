@@ -1,4 +1,4 @@
-from social.backends.oauth import BaseOAuth1
+from social_core.backends.oauth import BaseOAuth1
 
 
 def get_unauthorized_token(self):
