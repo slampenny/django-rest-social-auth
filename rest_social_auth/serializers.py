@@ -3,6 +3,8 @@ import warnings
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
+from django.apps import apps as django_apps
+from django.conf import settings
 
 
 l = logging.getLogger(__name__)
@@ -26,7 +28,7 @@ class OAuth1InputSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = get_user_model()
+        model = django_apps.get_model(settings.MONGOENGINE_USER_DOCUMENT)
         exclude = ('is_staff', 'is_active', 'date_joined', 'password',
                    'last_login', 'user_permissions', 'groups', 'is_superuser',)
 
