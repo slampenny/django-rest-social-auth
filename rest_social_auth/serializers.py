@@ -1,16 +1,18 @@
 import logging
 import warnings
-from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
 from django.apps import apps as django_apps
 from django.conf import settings
 
+from django_mongoengine.mongo_auth.models import User
+from rest_framework_mongoengine import serializers
+
 
 l = logging.getLogger(__name__)
 
 
-class OAuth2InputSerializer(serializers.Serializer):
+class OAuth2InputSerializer(serializers.DocumentSerializer):
 
     provider = serializers.CharField(required=False)
     code = serializers.CharField()
@@ -28,8 +30,8 @@ class OAuth1InputSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = django_apps.get_model(settings.MONGOENGINE_USER_DOCUMENT)
-        exclude = ('is_staff', 'is_active', 'date_joined', 'password',
+        model = User
+        exclude = ('_id', 'is_staff', 'is_active', 'date_joined', 'password',
                    'last_login', 'user_permissions', 'groups', 'is_superuser',)
 
 
