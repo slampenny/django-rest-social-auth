@@ -14,20 +14,20 @@ l = logging.getLogger(__name__)
 
 class OAuth2InputSerializer(serializers.DocumentSerializer):
 
-    provider = serializers.CharField(required=False)
-    code = serializers.CharField()
-    redirect_uri = serializers.CharField(required=False)
+    provider = serializers.StringField(null=True, blank=True)
+    code = serializers.StringField()
+    redirect_uri = serializers.StringField(null=True, blank=True)
 
 
-class OAuth1InputSerializer(serializers.Serializer):
+class OAuth1InputSerializer(serializers.DocumentSerializer):
 
-    provider = serializers.CharField(required=False)
-    oauth_token = serializers.CharField()
-    oauth_token_secret = serializers.CharField()
-    oauth_verifier = serializers.CharField()
+    provider = serializers.StringField(null=True, blank=True)
+    oauth_token = serializers.StringField()
+    oauth_token_secret = serializers.StringField()
+    oauth_verifier = serializers.StringField()
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.DocumentSerializer):
 
     class Meta:
         model = User
@@ -35,7 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
                    'last_login', 'user_permissions', 'groups', 'is_superuser',)
 
 
-class TokenSerializer(serializers.Serializer):
+class TokenSerializer(serializers.DocumentSerializer):
 
     token = serializers.SerializerMethodField()
 
