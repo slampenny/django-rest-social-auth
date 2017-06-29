@@ -34,7 +34,7 @@ class UserSerializer(mongo_serializers.DocumentSerializer):
     class Meta:
         model = User
         exclude = ('id', 'is_staff', 'is_active', 'date_joined', 'password',
-                   'last_login', 'user_permissions', 'groups', 'is_superuser',)
+                   'last_login', 'user_permissions', 'is_superuser',)
 
 
 class TokenSerializer(serializers.Serializer):
