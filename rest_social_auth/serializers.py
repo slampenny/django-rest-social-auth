@@ -1,5 +1,6 @@
 import logging
 import warnings
+from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
 from django.apps import apps as django_apps
@@ -7,28 +8,28 @@ from django.conf import settings
 
 from django_mongoengine import fields
 from django_mongoengine.mongo_auth.models import User
-from rest_framework_mongoengine import serializers
+from rest_framework_mongoengine import serializers as mongo_serializers
 
 
 l = logging.getLogger(__name__)
 
 
-class OAuth2InputSerializer(serializers.DocumentSerializer):
+class OAuth2InputSerializer(serializers.Serializer):
 
-    provider = fields.StringField(null=True, blank=True)
-    code = fields.StringField()
-    redirect_uri = fields.StringField(null=True, blank=True)
-
-
-class OAuth1InputSerializer(serializers.DocumentSerializer):
-
-    provider = fields.StringField(null=True, blank=True)
-    oauth_token = fields.StringField()
-    oauth_token_secret = fields.StringField()
-    oauth_verifier = fields.StringField()
+    provider = serializers.CharField(required=False)
+    code = serializers.CharField()
+    redirect_uri = serializers.CharField(required=False)
 
 
-class UserSerializer(serializers.DocumentSerializer):
+class OAuth1InputSerializer(serializers.Serializer):
+
+    provider = serializers.CharField(required=False)
+    oauth_token = serializers.CharField()
+    oauth_token_secret = serializers.CharField()
+    oauth_verifier = serializers.CharField()
+
+
+class UserSerializer(mongo_serializers.DocumentSerializer):
 
     class Meta:
         model = User
@@ -36,7 +37,7 @@ class UserSerializer(serializers.DocumentSerializer):
                    'last_login', 'user_permissions', 'groups', 'is_superuser',)
 
 
-class TokenSerializer(serializers.DocumentSerializer):
+class TokenSerializer(serializers.Serializer):
 
     token = serializers.SerializerMethodField()
 
