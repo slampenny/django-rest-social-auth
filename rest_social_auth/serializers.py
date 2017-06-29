@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.apps import apps as django_apps
 from django.conf import settings
 
+from django_mongoengine import fields
 from django_mongoengine.mongo_auth.models import User
 from rest_framework_mongoengine import serializers
 
@@ -14,17 +15,17 @@ l = logging.getLogger(__name__)
 
 class OAuth2InputSerializer(serializers.DocumentSerializer):
 
-    provider = serializers.StringField(null=True, blank=True)
-    code = serializers.StringField()
-    redirect_uri = serializers.StringField(null=True, blank=True)
+    provider = fields.StringField(null=True, blank=True)
+    code = fields.StringField()
+    redirect_uri = fields.StringField(null=True, blank=True)
 
 
 class OAuth1InputSerializer(serializers.DocumentSerializer):
 
-    provider = serializers.StringField(null=True, blank=True)
-    oauth_token = serializers.StringField()
-    oauth_token_secret = serializers.StringField()
-    oauth_verifier = serializers.StringField()
+    provider = fields.StringField(null=True, blank=True)
+    oauth_token = fields.StringField()
+    oauth_token_secret = fields.StringField()
+    oauth_verifier = fields.StringField()
 
 
 class UserSerializer(serializers.DocumentSerializer):
