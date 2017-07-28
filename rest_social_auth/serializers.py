@@ -7,7 +7,7 @@ from django.apps import apps as django_apps
 from django.conf import settings
 
 from django_mongoengine import fields
-from django_mongoengine.mongo_auth.models import User
+from django_mongoengine.mongo_auth import MongoUser as User
 from rest_framework_mongoengine import serializers as mongo_serializers
 
 

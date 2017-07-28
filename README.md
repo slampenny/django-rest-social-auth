@@ -392,7 +392,7 @@ To do it
 
             class Meta:
                 model = get_user_model()
-                exclude = ('password', 'user_permissions', 'groups')
+                exclude = ('rpassword', 'user_permissions', 'groups')
 
 - define view
 
