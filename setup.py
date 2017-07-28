@@ -45,7 +45,9 @@ setup(
         "djangorestframework<4.0",
         "social-auth-core>=1.3,<2.0",
         "social-auth-app-django>=1.2,<2.0",
-        "https://github.com/MongoEngine/django-mongoengine/tarball/master"
+    ],
+    dependency_links=[
+        'git+https://github.com/MongoEngine/django-mongoengine/',
     ],
     keywords='django social auth rest login signin signup oauth'.split(),
     include_package_data=True,
