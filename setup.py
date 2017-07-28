@@ -40,7 +40,13 @@ setup(
     long_description=__read('README.rst') + '\n\n' + __read('RELEASE_NOTES.rst'),
     platforms=('Any'),
     packages=['rest_social_auth_mongoengine'],
-    install_requires=install_requires,
+    install_requires=[
+        "django>=1.6,<1.12",
+        "djangorestframework<4.0",
+        "social-auth-core>=1.3,<2.0",
+        "social-auth-app-django>=1.2,<2.0",
+        "https://github.com/MongoEngine/django-mongoengine/tarball/master"
+    ],
     keywords='django social auth rest login signin signup oauth'.split(),
     include_package_data=True,
     license='BSD License',
