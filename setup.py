@@ -32,20 +32,20 @@ if sys.argv[-1] == 'tag':
 install_requires = __read('requirements.txt').split()
 
 setup(
-    name='rest_social_auth',
+    name='rest_social_auth_mongoengine',
     author=__author__,
-    author_email='alexevseev@gmail.com',
+    author_email='jordan@jordanlapp.com',
     version=__version__,
     description='Django rest framework resources for social auth',
     long_description=__read('README.rst') + '\n\n' + __read('RELEASE_NOTES.rst'),
     platforms=('Any'),
-    packages=['rest_social_auth'],
+    packages=['rest_social_auth_mongoengine'],
     install_requires=install_requires,
     keywords='django social auth rest login signin signup oauth'.split(),
     include_package_data=True,
     license='BSD License',
-    package_dir={'rest_social_auth': 'rest_social_auth'},
-    url='https://github.com/st4lk/django-rest-social-auth',
+    package_dir={'rest_social_auth_mongoengine': 'rest_social_auth_mongoengine'},
+    url='https://github.com/slampenny/django-rest-social-auth',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
