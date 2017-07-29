@@ -3,7 +3,7 @@ import warnings
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 
-from django_mongoengine.mongo_auth import BaseUser as User
+from django_mongoengine.mongo_auth.models import User
 from rest_framework_mongoengine import serializers as mongo_serializers
 
 
