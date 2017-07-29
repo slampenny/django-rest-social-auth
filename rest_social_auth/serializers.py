@@ -3,7 +3,7 @@ import warnings
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 
-from django_mongoengine.mongo_auth import MongoUser as User
+from django_mongoengine.mongo_auth import BaseUser as User
 from rest_framework_mongoengine import serializers as mongo_serializers
 
 
@@ -29,7 +29,7 @@ class UserSerializer(mongo_serializers.DocumentSerializer):
 
     class Meta:
         model = User
-        exclude = ('id', 'is_staff', 'is_active', 'date_joined',
+        exclude = ('id', 'is_staff', 'is_active', 'date_joined', 'password',
                    'last_login', 'user_permissions', 'is_superuser',)
 
 
