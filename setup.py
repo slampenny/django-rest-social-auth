@@ -52,7 +52,7 @@ setup(
     keywords='django social auth rest login signin signup oauth'.split(),
     include_package_data=True,
     license='BSD License',
-    package_dir={'rest_social_auth_mongoengine': 'rest_social_auth'},
+    package_dir={'rest_social_auth_mongoengine': 'rest_social_authr'},
     url='https://github.com/slampenny/django-rest-social-auth-mongoengine',
     classifiers=[
         'Environment :: Web Environment',
